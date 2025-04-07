@@ -11,20 +11,7 @@ jobs:
               uses: iiakovleva-l/ci-cd-workflows/.github/workflows/build-maven.yml@main
               with:
                 java-version: '17'
-                maven-goals: 'clean install'
-                maven-options: '-DskipTests'
-              outputs:
-                build-status: ${{ job.outputs.build-status }}
-    build-status:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-
-            - name: Check Build Status
-              if: ${{ needs.caller-build.outputs.build-status == 'success' }}
-              run: echo "Maven build was successful!"
-
-            - name: Check Build Failure
-              if: ${{ needs.caller-build.outputs.build-status == 'failure' }}
-              run: echo "Maven build failed!"
+                maven-goals: 'clean package'
+                
+      
+  
