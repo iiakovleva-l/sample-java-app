@@ -8,22 +8,21 @@ on:
 
 jobs:
     caller-build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-
-            - name: Call maven build workflow
               uses: iiakovleva-l/ci-cd-workflows/.github/workflows/build-maven.yml@main
               with:
                 java-version: '17'
                 maven-goals: 'clean install'
                 maven-options: '-DskipTests'
+    build-status:
+        runs-on: ubuntu-latest
+        steps:
+            - name: CHeckout code
+              uses: actions/checkout@v4
 
             - name: Check Build Status
-              if: ${{ needs.build-maven.outputs.build-status == 'success' }}
+              if: ${{ needs.caller-build.outputs.build-status == 'success' }}
               run: echo "Maven build was successful!"
 
             - name: Check Build Failure
-              if: ${{ needs.build-maven.outputs.build-status == 'failure' }}
+              if: ${{ needs.caller-build.outputs.build-status == 'failure' }}
               run: echo "Maven build failed!"
