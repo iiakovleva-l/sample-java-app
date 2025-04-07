@@ -1,0 +1,53 @@
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+target/
+bin/
+.settings/
+.classpath
+.project
+
+# Maven specific
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.nextVersion
+pom.xml.backup
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/MavenWrapperDownloader.java
+.mvn/wrapper/README.md
+
+# IntelliJ IDEA specific (if you use IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse specific (if you use Eclipse)
+.metadata/
+.plugins/
+.recommenders/
+
+# NetBeans specific (if you use NetBeans)
+nbproject/private/
+build/
+dist/
+nbdist/
+nbactions.xml
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDouble
+.com.apple.FinderInfo
