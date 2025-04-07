@@ -13,6 +13,8 @@ jobs:
                 java-version: '17'
                 maven-goals: 'clean install'
                 maven-options: '-DskipTests'
+              outputs:
+                build-status: ${{ job.outputs.build-status }}
     build-status:
         runs-on: ubuntu-latest
         steps:
