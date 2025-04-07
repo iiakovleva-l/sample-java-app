@@ -1,0 +1,29 @@
+name: Build caller workflow
+
+on:
+    push:
+        branches: [ "main"]
+    pull_request:
+        branches: [ "main"]
+
+jobs:
+    caller-build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Call maven build workflow
+              uses: ./.github/workflows/build-maven.yml
+              with:
+                java-version: '17'
+                maven-goals: 'clean install'
+                maven-options: '-DskipTests'
+
+            - name: Check Build Status
+              if: ${{ needs.build-and-test.outputs.build-status == 'success' }}
+              run: echo "Maven build was successful!"
+
+            - name: Check Build Failure
+              if: ${{ needs.build-and-test.outputs.build-status == 'failure' }}
+              run: echo "Maven build failed!"
