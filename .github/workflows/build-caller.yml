@@ -13,16 +13,16 @@ jobs:
                 java-version: '17'
                 maven-goals: 'clean install'
                 maven-options: '-DskipTests'
-    build-status:
-        runs-on: ubuntu-latest
-        steps:
-            - name: CHeckout code
-              uses: actions/checkout@v4
+    # build-status:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: CHeckout code
+    #           uses: actions/checkout@v4
 
-            - name: Check Build Status
-              if: ${{ needs.caller-build.outputs.build-status == 'success' }}
-              run: echo "Maven build was successful!"
+    #         - name: Check Build Status
+    #           if: ${{ needs.caller-build.outputs.build-status == 'success' }}
+    #           run: echo "Maven build was successful!"
 
-            - name: Check Build Failure
-              if: ${{ needs.caller-build.outputs.build-status == 'failure' }}
-              run: echo "Maven build failed!"
+    #         - name: Check Build Failure
+    #           if: ${{ needs.caller-build.outputs.build-status == 'failure' }}
+    #           run: echo "Maven build failed!"
